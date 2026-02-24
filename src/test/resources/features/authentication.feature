@@ -19,7 +19,7 @@ Feature: Auth Login API
     When user submit the login request
     Then user should get the response with <statusCode> and "<errorMessage>"
 
-    Examples:
+    Example/b b            b b  b  b s:
       | username | password | statusCode | errorMessage        |
       | wrong    | wrong    | 401        | Invalid credentials |
       | admin    | wrong    | 401        | Invalid credentials |
