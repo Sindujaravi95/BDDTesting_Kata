@@ -14,7 +14,7 @@ Feature: List Of Room API
     Then user should get the list of rooms response with status 404
 
 
-  @negative  @unauthorized @security
+  @negative @unauthorized @security
   Scenario: Search list of rooms without authentication token
     When user search the list of rooms without authentication token
     Then user should get the booking response with status code 401
