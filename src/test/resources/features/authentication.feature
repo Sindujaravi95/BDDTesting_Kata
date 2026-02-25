@@ -1,4 +1,4 @@
-@hotelRoomBookingApiSuite @auth
+@hotelRoomBookingApiSuite @auth @regression
 Feature: Auth Login API
 
   @smoke @positive @authorization
@@ -13,7 +13,7 @@ Feature: Auth Login API
       | admin    | password | 200        |
 
 
-  @regression @negative @credValidation
+  @negative @credValidation
   Scenario Outline: Login with invalid credentials
     Given user login with given credentials "<username>" and "<password>"
     When user submit the login request
@@ -32,14 +32,14 @@ Feature: Auth Login API
       | admin    | PASSWORD | 401        | Invalid credentials |
 
 
-  @regression @negative @invalidEndpoint
+  @negative @invalidEndpoint
   Scenario: Login with invalid endpoint
     Given user login with given credentials "admin" and "password"
     When user submit the login request "/api/login"
     Then user should get the response with 404
 
 
-  @regression @negative @rest @invalidHttpMethod
+  @negative @rest @invalidHttpMethod
   Scenario Outline: Login with wrong HTTP method
     Given user login with given credentials "<username>" and "<password>"
     When user submit the invalid login request
@@ -50,7 +50,7 @@ Feature: Auth Login API
       | admin    | password | 405        |
 
 
-  @regression @negative @security @ratelimit
+  @negative @security @ratelimit
   Scenario Outline: Login after multiple failed attempts
     Given user login with invalid credentials "<username>" and "<password>" multiple times
     When user tries to login again with valid credentials
