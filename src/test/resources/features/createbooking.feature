@@ -1,4 +1,4 @@
-@hotelRoomBookingApiSuite @createBooking @regression
+@hotelRoomBookingApiSuite @createBookingFeature @regression
 Feature: Create Booking API
 
   @smoke @positive

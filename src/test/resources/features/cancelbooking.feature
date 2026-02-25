@@ -1,4 +1,4 @@
-@hotelRoomBookingApiSuite @cancelBooking @@regression
+@hotelRoomBookingApiSuite @cancelBookingFeature @@regression
 Feature: Cancel Booking API
 
 

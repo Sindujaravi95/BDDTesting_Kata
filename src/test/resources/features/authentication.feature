@@ -1,4 +1,4 @@
-@hotelRoomBookingApiSuite @auth @regression
+@hotelRoomBookingApiSuite @authenticationFeature @regression
 Feature: Auth Login API
 
   @smoke @positive @authorization

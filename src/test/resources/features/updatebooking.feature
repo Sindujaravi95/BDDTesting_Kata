@@ -1,4 +1,4 @@
-@hotelRoomBookingApiSuite @updateBooking @regression
+@hotelRoomBookingApiSuite @updateBookingFeature @regression
 Feature: Update Booking API
 
   @positive  @validData
