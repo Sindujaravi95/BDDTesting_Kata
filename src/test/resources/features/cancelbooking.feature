@@ -1,4 +1,4 @@
-@hotelRoomBookingApiSuite @cancelBookingFeature @@regression
+@hotelRoomBookingApiSuite @cancelBookingFeature @regression
 Feature: Cancel Booking API
 
 
@@ -13,7 +13,7 @@ Feature: Cancel Booking API
     Then user successfully deleted the hotel room booking with status 200
 
 
-  @negative  @invalidEndpoint
+  @negative @invalidEndpoint
   Scenario: Cancel booking with invalid endpoint - 404
     Given user books the hotel room with given details
       | firstname | lastname | email            | phone       | checkin    | checkout   | depositpaid |
@@ -24,7 +24,7 @@ Feature: Cancel Booking API
     Then user should get the cancel booking response with 404
 
 
-  @negative  @invalidBookingId
+  @negative @invalidBookingId
   Scenario Outline: Cancel booking with non-existing booking id
     When user cancel the booking request with invalid booking id "<bookingId>"
     Then user should get the cancel booking response with <statusCode>
@@ -38,7 +38,7 @@ Feature: Cancel Booking API
       | xyz@456   | 400        |
 
 
-  @negative  @invalidHttpMethod
+  @negative @invalidHttpMethod
   Scenario: Cancel booking using unsupported HTTP method - 405
     Given user books the hotel room with given details
       | firstname | lastname | email          | phone       | checkin    | checkout   | depositpaid |
@@ -49,7 +49,7 @@ Feature: Cancel Booking API
     Then user should get the cancel booking response with 405
 
 
-  @negative  @duplicate @businessValidation
+  @negative @duplicate @businessValidation
   Scenario: Cancel same booking twice
     Given user books the hotel room with given details
       | firstname | lastname | email          | phone       | checkin    | checkout   | depositpaid |
@@ -59,7 +59,7 @@ Feature: Cancel Booking API
     Then user should get the cancel booking response with 404
 
 
-  @negative  @unauthorized @security
+  @negative @unauthorized @security
   Scenario: Cancel booking without authentication token
     When user cancel the booking request without authentication token
     Then user should get the booking response with status code 401

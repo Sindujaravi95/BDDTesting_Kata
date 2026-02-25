@@ -1,7 +1,7 @@
 @hotelRoomBookingApiSuite @updateBookingFeature @regression
 Feature: Update Booking API
 
-  @positive  @validData
+  @positive @validData
   Scenario Outline: Update booking with valid details
     Given user books the hotel room with following details
       | firstname   | lastname   | email   | phone   | checkin   | checkout   | depositpaid   |
@@ -19,7 +19,7 @@ Feature: Update Booking API
       | Sinduja   | Ravi     | test@gmail.com | 87955879703 | 2026-05-05 | 2026-05-06 | true        | Sindu    | Kumar   | updated@gmail.com | 87955879704 | 2026-05-07 | 2026-05-08  | false          | 200        |
 
 
-  @negative  @fieldValidation
+  @negative @fieldValidation
   Scenario Outline: Update booking with invalid input
     Given user books the hotel room with following details
       | firstname | lastname | email          | phone       | checkin    | checkout   | depositpaid |
@@ -54,14 +54,14 @@ Feature: Update Booking API
       | Sinduja                         | Ravi                           | test@gmail.com | 87955879703 | 2026-05-01 | 2026-05-02 | 123         | 400        | Failed to update booking            |
 
 
-  @negative  @invalidEndpoint
+  @negative @invalidEndpoint
   Scenario: Update booking with invalid endpoint
     Given user has a valid booking id
     When user update the booking request "/api/bookings"
     Then user should get the update booking response with 404
 
 
-  @negative  @invalidBookingId
+  @negative @invalidBookingId
   Scenario: Update booking with non-existing booking id
     Given user update the hotel room with following details
       | firstname | lastname | email          | phone       | checkin    | checkout   | depositpaid |
@@ -70,14 +70,14 @@ Feature: Update Booking API
     Then user should get the update booking response with 404
 
 
-  @negative  @invalidHttpMethod
+  @negative @invalidHttpMethod
   Scenario: Update booking using unsupported HTTP method
     Given user has a valid booking id
     When user sends PUT request instead of PATCH for update
     Then user should get the update booking response with 405
 
 
-  @negative  @unauthorized
+  @negative @unauthorized
   Scenario: Update booking details without authentication token
     When user update the booking details without authentication token
     Then user should get the booking response with status code 401

@@ -96,7 +96,7 @@ Feature: Create Booking API
       | Sinduja   | Ravi     | test.test@gmail.com | 23525678345 | 2026-01-28 | 2026-01-29 | true        |
 
 
-  @negative @@unauthorized @security
+  @negative @unauthorized @security
   Scenario: Create booking without authentication token
     When user submit the booking request without authentication token
     Then user should get the booking response with status code 401

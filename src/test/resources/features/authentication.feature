@@ -50,7 +50,7 @@ Feature: Auth Login API
       | admin    | password | 405        |
 
 
-  @negative @security @ratelimit
+  @negative @security @rateLimit
   Scenario Outline: Login after multiple failed attempts
     Given user login with invalid credentials "<username>" and "<password>" multiple times
     When user tries to login again with valid credentials

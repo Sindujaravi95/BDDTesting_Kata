@@ -2,7 +2,7 @@
 Feature: Get booking details by room id
 
 
-  @smoke @positive  @validData
+  @smoke @positive @validData
   Scenario Outline: Search booking details with valid room id
     Given user search booking details with room id "<roomId>"
     When user search the booking details
@@ -13,7 +13,7 @@ Feature: Get booking details by room id
       | 1      | 200        |
 
 
-  @negative  @idValidation
+  @negative @idValidation
   Scenario Outline: Search booking details with invalid room id
     Given user search booking details with room id "<roomId>"
     When user search the booking details
@@ -29,7 +29,7 @@ Feature: Get booking details by room id
       | xyz@456 | 400        | Invalid Room ID     |
 
 
-  @negative  @invalidEndpoint
+  @negative @invalidEndpoint
   Scenario: Search booking details with invalid endpoint
     Given user search booking details with room id "1"
     When user search the booking details with "/api/search"

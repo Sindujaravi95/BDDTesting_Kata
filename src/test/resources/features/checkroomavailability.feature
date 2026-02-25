@@ -2,7 +2,7 @@
 Feature: Get available rooms by check in and checkout dates
 
 
-  @smoke @positive  @validData
+  @smoke @positive @validData
   Scenario Outline: Check available rooms with valid dates
     Given user check the availability of rooms with checkin "<checkin>" and checkout "<checkout>" dates
     When user search the availability of rooms
@@ -13,14 +13,14 @@ Feature: Get available rooms by check in and checkout dates
       | 2025-07-17 | 2025-07-18 | 200        |
 
 
-  @negative  @invalidEndpoint
+  @negative @invalidEndpoint
   Scenario: Check available rooms with invalid endpoint
     Given user check the availability of rooms with checkin "2025-07-17" and checkout "2025-07-18" dates
     When user checks the availability of room with "api/rooms"
     Then user should get the availability of room response with status 404
 
 
-  @negative  @dateValidation
+  @negative @dateValidation
   Scenario Outline: Check available rooms with invalid dates
     Given user check the availability of rooms with checkin "<checkin>" and checkout "<checkout>" dates
     When user search the availability of rooms
@@ -40,7 +40,7 @@ Feature: Get available rooms by check in and checkout dates
       | 2026-02-21 | 2029-02-20 | 400        |
 
 
-  @negative  @unauthorized @security
+  @negative @unauthorized @security
   Scenario: Check room availability without authentication token
     When user check the availability of rooms without authentication token
     Then user should get the booking response with status code 401
