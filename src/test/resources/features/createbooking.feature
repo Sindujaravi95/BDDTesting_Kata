@@ -1,7 +1,7 @@
-@hotelRoomBookingApiSuite @booking
+@hotelRoomBookingApiSuite @createBooking
 Feature: Create Booking API
 
-  @smoke @positive @create
+  @smoke @positive
   Scenario Outline: Create room booking with valid details
     Given user book the hotel room with following details
       | firstname   | lastname   | email   | phone   | checkin   | checkout   | depositpaid   |
@@ -21,7 +21,7 @@ Feature: Create Booking API
       | Sinduja            | Ravi                           | test.test@gmail.com | 235256783455345678902 | 2026-04-20 | 2026-04-21 | 201        | true        |
 
 
-  @regression @negative @fieldValidation
+  @regression  @negative @fieldValidation
   Scenario Outline: Create booking with invalid input
     Given user book the hotel room with following details
       | firstname   | lastname   | email   | phone   | checkin   | checkout   | depositpaid   |
@@ -54,7 +54,7 @@ Feature: Create Booking API
       | Sinduja             | Ravi                            | test@gmail.com      | 879558797034           | 2026-01-28 | 2026-01-29 | 400        | Failed to create booking            | 123         |
 
 
-  @regression @negative @dateValidation
+  @regression  @negative @dateValidation
   Scenario Outline: Create booking with invalid date
     Given user book the hotel room with following details
       | firstname   | lastname   | email   | phone   | checkin   | checkout   | depositpaid   |
@@ -70,19 +70,19 @@ Feature: Create Booking API
       | Sindu     | Ravi     | test@gmail.com | 879558797034 | 2026-01-28 | 2026-01-29 | 400        | Failed to create booking | true        |
 
 
-  @regression @negative @routing
+  @regression  @negative @invalidEndpoint
   Scenario: Create booking with invalid endpoint
     When user submit the booking request "/api/bookings"
     Then user should get the booking response with status code 404
 
 
-  @regression @negative @rest @httpMethod
+  @regression  @negative @rest @invalidHttpMethod
   Scenario: Create booking with unsupported HTTP method
     When user submit the invalid booking request
     Then user should get the booking response with status code 405
 
 
-  @regression @negative @duplicate @businessValidation
+  @regression  @negative @duplicate @businessValidation
   Scenario Outline: Create duplicate booking with same details
     Given user book the hotel room with following details
       | firstname   | lastname   | email   | phone   | checkin   | checkout   | depositpaid   |
@@ -96,7 +96,7 @@ Feature: Create Booking API
       | Sinduja   | Ravi     | test.test@gmail.com | 23525678345 | 2026-01-28 | 2026-01-29 | true        |
 
 
-  @regression @negative @authorization @security
+  @regression @negative @@unauthorized @security
   Scenario: Create booking without authentication token
     When user submit the booking request without authentication token
     Then user should get the booking response with status code 401

@@ -19,7 +19,7 @@ Feature: Auth Login API
     When user submit the login request
     Then user should get the response with <statusCode> and "<errorMessage>"
 
-    Example/b b            b b  b  b s:
+    Examples:
       | username | password | statusCode | errorMessage        |
       | wrong    | wrong    | 401        | Invalid credentials |
       | admin    | wrong    | 401        | Invalid credentials |
@@ -32,14 +32,14 @@ Feature: Auth Login API
       | admin    | PASSWORD | 401        | Invalid credentials |
 
 
-  @regression @negative @routing
+  @regression @negative @invalidEndpoint
   Scenario: Login with invalid endpoint
     Given user login with given credentials "admin" and "password"
     When user submit the login request "/api/login"
     Then user should get the response with 404
 
 
-  @regression @negative @rest @httpMethod
+  @regression @negative @rest @invalidHttpMethod
   Scenario Outline: Login with wrong HTTP method
     Given user login with given credentials "<username>" and "<password>"
     When user submit the invalid login request
